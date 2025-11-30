@@ -1,0 +1,19 @@
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import { fileURLToPath, URL } from 'node:url'
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [vue()],
+  resolve: {
+    alias: {
+      // Ensure runtime template compilation is available for in-DOM templates
+      'vue': 'vue/dist/vue.esm-bundler.js',
+      // optional: support @ as src alias
+      '@': fileURLToPath(new URL('./src', import.meta.url))
+    }
+  },
+  server: {
+    port: 5173
+  }
+})
